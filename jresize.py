@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+###############################################################
+# jresize ::: http://j2d2.tumblr.com/post/73821449/jresize-py #
+###############################################################
+
 from PIL import Image
 from os import listdir, mkdir
 from os.path import exists as direxists

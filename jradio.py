@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+#############################################################
+# jradio ::: http://j2d2.tumblr.com/post/73499186/jradio-py #
+#############################################################
+
 import urllib
 import sys
 import os
