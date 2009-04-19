@@ -84,6 +84,5 @@ def scrape_station_info(url):
     return station_list
         
 if __name__ == "__main__":
-    fin_msg = crank_the_radio(somafm_url)
-    print fin_msg
+    print crank_the_radio(somafm_url)
     
