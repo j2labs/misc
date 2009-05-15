@@ -12,6 +12,7 @@ import time
 
 mp3_player = '/opt/local/bin/mpg321 -q '
 somafm_url = 'http://soma.fm/'
+stations_info = {'Bassdrive': 'http://www.bassdrive.com/v2/streams/BassDrive.pls'}
 
 class InternetRadioStation:
     """
@@ -20,7 +21,7 @@ class InternetRadioStation:
     def __init__(self, name=None, pls_url=None, url=None):
         self.name = name
         self.pls_url = pls_url
-
+        
     def play(self):
         urls_available = self.urls_from_pls(self.pls_url)
         for url in urls_available:
@@ -46,8 +47,15 @@ class InternetRadioStation:
     def __str__(self):
         return "%s ::: %s" % (self.name, self.pls_url)
 
-def crank_the_radio(url):
-    station_list = scrape_station_info(url)
+def crank_the_radio():
+    # Initialize list with soma.fm
+    station_list = scrape_somafm_info(somafm_url)
+    
+    # include additional pls files
+    for name in stations_info:
+        pls_url = stations_info[name]
+        station_list.append(make_stations(name,pls_url))
+        
     print "Stations:"
     for key, station in enumerate(station_list):
         print "  %2d. %s" % (key, station)
@@ -55,7 +63,10 @@ def crank_the_radio(url):
     station = station_list[choice]
     return station.play()
 
-def scrape_station_info(url):
+def make_stations(name, pls):
+    return InternetRadioStation(name, pls)
+
+def scrape_somafm_info(url):
     station_list = []
     page = urllib.urlopen(url)
     station_name = None
@@ -84,5 +95,5 @@ def scrape_station_info(url):
     return station_list
         
 if __name__ == "__main__":
-    print crank_the_radio(somafm_url)
-    
+    print crank_the_radio()
+
