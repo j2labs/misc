@@ -12,7 +12,9 @@ import time
 
 mp3_player = '/opt/local/bin/mpg321 -q '
 somafm_url = 'http://soma.fm/'
-stations_info = {'Bassdrive': 'http://www.bassdrive.com/v2/streams/BassDrive.pls'}
+stations_info = {
+    'Bassdrive': 'http://www.bassdrive.com/v2/streams/BassDrive.pls',
+}
 
 class InternetRadioStation:
     """

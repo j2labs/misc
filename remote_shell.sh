@@ -1,7 +1,7 @@
 if [ $USER = "root" ]; then
 	PS_COLOR="31m";
 else
-	PS_COLOR="36m";
+	PS_COLOR="32m";
 	export TMPDIR="$HOME/.tmp";
 fi
 export PS1="\n[01;$PS_COLOR\u@\h[0m : \t : [01;34m\w[0m\n\$ "
