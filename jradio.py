@@ -4,14 +4,14 @@
 # jradio ::: http://j2d2.tumblr.com/post/73499186/jradio-py #
 #############################################################
 
-import urllib
+import urllib2
 import sys
 import os
 import re
 import time
 
 mp3_player = '/opt/local/bin/mpg321 -q '
-somafm_url = 'http://soma.fm/'
+somafm_url = 'http://somafm.com/'
 stations_info = {
     'Bassdrive': 'http://www.bassdrive.com/v2/streams/BassDrive.pls',
 }
@@ -34,7 +34,7 @@ class InternetRadioStation:
         return "No usable urls found"
 
     def urls_from_pls(self, pls_url):
-        playlist = urllib.urlopen(pls_url)
+        playlist = urllib2.urlopen(pls_url)
         urls = []
         for line in playlist:
             p = re.compile('File\d+=(.*)')
@@ -70,7 +70,7 @@ def make_stations(name, pls):
 
 def scrape_somafm_info(url):
     station_list = []
-    page = urllib.urlopen(url)
+    page = urllib2.urlopen(url)
     station_name = None
     station_url = None
     list_found = False
