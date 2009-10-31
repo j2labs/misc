@@ -78,6 +78,7 @@ def wrap(text, width):
 def ioctl_GWINSZ(fd):
     """
     Tabulation functions for discovering terminal width
+    Found at :: http://pdos.csail.mit.edu/~cblake/cls/cls.py
     """
     try:
         import fcntl, termios, struct, os
