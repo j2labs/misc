@@ -9,6 +9,7 @@ import sys
 import os
 import re
 import time
+from BeautifulSoup import BeautifulSoup
 
 mp3_player = '/opt/local/bin/mpg321 -q '
 somafm_url = 'http://somafm.com/'
@@ -71,29 +72,16 @@ def make_stations(name, pls):
 def scrape_somafm_info(url):
     station_list = []
     page = urllib2.urlopen(url)
-    station_name = None
-    station_url = None
-    list_found = False
-    regex_station = re.compile('<!-- (.*) -->')
-    regex_url = re.compile('<a href="(.*)" >.*')
-    for line in page:
-        if not list_found:
-            if '<!-- updated ' in line:
-                list_found = True
-        else:
-            m = regex_station.match(line)
-            if m and not station_name:
-                station_name = m.group(1)
-                m = None
-            m = regex_url.match(line)
-            if m and station_name:
-                station_url = m.group(1)
-                pls_name_info = station_url.rsplit('/')
-                pls_url = url + pls_name_info[2] + '.pls'
-                irs = InternetRadioStation(name=station_name,
-                                           pls_url=pls_url)
-                station_list.append(irs)
-                station_name = None
+    html = page.read()
+    soup = BeautifulSoup(html)
+    for station in soup.fetch('li'):
+        station_name = station.h3.contents[0]
+        station_url = station.a['href']
+        pls_name_info = station_url.rsplit('/')
+        pls_url = '%s%s%s' % (url, pls_name_info[2], '.pls')
+        irs = InternetRadioStation(name=station_name,
+                                   pls_url=pls_url)
+        station_list.append(irs)
     return station_list
         
 if __name__ == "__main__":
