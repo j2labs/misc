@@ -11,7 +11,7 @@ export BLOCKSIZE=K;
 export PAGER="less";
 
 ### default arguments to commands
-alias ls="ls -F -G";
+alias ls="ls -F --color";
 alias rm="rm -i";
 alias cp="cp -i";
 alias mv="mv -i";
