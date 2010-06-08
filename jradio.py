@@ -11,7 +11,8 @@ import re
 import time
 from BeautifulSoup import BeautifulSoup
 
-mp3_player = '/opt/local/bin/mpg321 -q '
+#mp3_player = '/opt/local/bin/mpg321 -q '
+mp3_player = '/opt/local/bin/mpg123 -q '
 somafm_url = 'http://somafm.com/'
 stations_info = (
     ('Bassdrive', 'http://www.bassdrive.com/v2/streams/BassDrive.pls', 'Drum n Bass Radio',),
