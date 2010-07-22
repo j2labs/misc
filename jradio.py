@@ -12,7 +12,7 @@ import time
 from BeautifulSoup import BeautifulSoup
 
 #mp3_player = '/opt/local/bin/mpg321 -q '
-mp3_player = '/opt/local/bin/mpg123 -q '
+mp3_player = '/opt/local/bin/mpg123 -q'
 somafm_url = 'http://somafm.com/'
 stations_info = (
     ('Bassdrive', 'http://www.bassdrive.com/v2/streams/BassDrive.pls', 'Drum n Bass Radio',),
@@ -31,7 +31,7 @@ class InternetRadioStation:
         urls_available = self.urls_from_pls(self.pls_url)
         for url in urls_available:
             print '\nTrying url ::: %s' % (url)
-            val = os.system(mp3_player + url)
+            val = os.system('%s %s' % (mp3_player, url)) 
             if val == 2:
                 return '\nFinished playing'
         return "No usable urls found"
