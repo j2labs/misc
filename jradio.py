@@ -15,8 +15,12 @@ from BeautifulSoup import BeautifulSoup
 mp3_player = '/opt/local/bin/mpg123 -q'
 somafm_url = 'http://somafm.com/'
 stations_info = (
-    ('Bassdrive', 'http://www.bassdrive.com/v2/streams/BassDrive.pls', 'Drum n Bass Radio',),
-    ('Dubstep.fm', 'http://www.dubstep.fm/listen.pls', 'Dub Step',),
+    ('Bassdrive',
+     'http://www.bassdrive.com/v2/streams/BassDrive.pls',
+     'Drum n Bass Radio from the Empire State Building',),
+    ('Dubstep.fm',
+     'http://www.dubstep.fm/listen.pls',
+     'Robot dinosaurs fighting in slow motion',),
 )
 
 class InternetRadioStation:
