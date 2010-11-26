@@ -1,5 +1,6 @@
-#!/usr/bin/env ruby
-class Solver
+#!/usr/bin/env
+
+ruby class Solver
   B = " " 
   attr_reader :sudoku_board
   
