@@ -2,7 +2,7 @@
 import urllib
 import simplejson
 
-query = urllib.urlencode({'q' : 'David Christian',
+query = urllib.urlencode({'q' : 'J2 Labs',
                           'rsz': 'small'})
 url = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s' \
       % (query)
