@@ -86,25 +86,6 @@ def ok_placement(row, col, board, attempt):
 
     return True
 
-def read_grid_file(filename):
-    f = open(filename, 'r')
-    for line in f:
-        b = parse_grid_line(line)
-
-def parse_grid_line(line):
-    board = []
-    col = []
-    i = 0
-    for c in line:
-        if i == Board.WIDTH:
-            board.append(col)
-            col = []
-        if c == '.':
-            col.append(Board.BLANK)
-        elif int(c) > 0 and int(c) < 10:
-            col.append(int(c))
-    return board
-
 if __name__ == "__main__":
     b = Board()
     print "Before solution:"
